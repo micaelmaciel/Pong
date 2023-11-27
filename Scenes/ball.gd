@@ -18,4 +18,12 @@ func _on_area_2d_area_entered(area):
 	var body: Node = area.get_parent()
 
 	if (body is CharacterBody2D):
-		var spriteMiddle: int = body.global_position + 16
+		var spriteMiddle: int = body.global_position.y + 16
+		var difference: int = global_position.y - spriteMiddle
+		velocity.x = velocity.x * -1
+		if (difference > 0):
+			velocity.y = abs(velocity.y)
+			velocity.y += difference * 2
+		elif (difference < 0):
+			velocity.y = abs(velocity.y) * -1
+			velocity.y = velocity.y + (difference * 2)
