@@ -20,4 +20,9 @@ texture = ExtResource("1_n3fvn")
 position = Vector2(0, -1)
 shape = SubResource("CapsuleShape2D_ek20k")
 
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(0, -1)
+scale = Vector2(0.6, 0.6)
+
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
