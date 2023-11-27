@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://ccfww8ldypq3l"]
+
+[ext_resource type="PackedScene" uid="uid://iy6fhusksuhs" path="res://Scenes/player.tscn" id="1_3te4e"]
+[ext_resource type="PackedScene" uid="uid://bs6427qimk5xe" path="res://Scenes/divisor.tscn" id="2_rl7ps"]
+[ext_resource type="PackedScene" uid="uid://cdh25x5etriyg" path="res://Scenes/ball.tscn" id="3_n0ylu"]
+
+[node name="Arena" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_3te4e")]
+position = Vector2(64, 134)
+
+[node name="Player2" parent="." instance=ExtResource("1_3te4e")]
+position = Vector2(410, 134)
+
+[node name="VBoxContainer" parent="." instance=ExtResource("2_rl7ps")]
+offset_left = 237.0
+offset_right = 243.0
+offset_bottom = 258.0
+
+[node name="Ball" parent="." instance=ExtResource("3_n0ylu")]
+position = Vector2(240, 135)

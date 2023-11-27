@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dftbs7dssiiiq"]
+
+[ext_resource type="Texture2D" uid="uid://bfv803q8k7idi" path="res://Sprites/divisor.png" id="1_hbwos"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cksf1"]
+
+[node name="SingleDivisor" type="Panel"]
+custom_minimum_size = Vector2(6, 22)
+offset_right = 6.0
+offset_bottom = 22.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_cksf1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(4, 12)
+texture = ExtResource("1_hbwos")
