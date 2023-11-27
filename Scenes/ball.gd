@@ -23,3 +23,5 @@ func _on_area_2d_area_entered(area) -> void:
 		var spriteMiddle: int = body.global_position.y + body.get_node("Sprite2D").get_rect().size.y/2
 		var difference: int = global_position.y - spriteMiddle
 		velocity.x = velocity.x * -1
+		velocity.x += 20
+		velocity.y += 20
