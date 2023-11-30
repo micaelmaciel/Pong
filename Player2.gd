@@ -4,9 +4,9 @@ extends CharacterBody2D
 
 func handle_movement():
 	var direction: int = 0
-	if (Input.is_action_pressed("p1Down")):
+	if (Input.is_action_pressed("p2Down")):
 		direction = 1
-	elif (Input.is_action_pressed("p1Up")):
+	elif (Input.is_action_pressed("p2Up")):
 		direction = -1
 	velocity.y = direction * speed
 
