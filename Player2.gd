@@ -15,4 +15,5 @@ func _ready():
 
 func _physics_process(_delta):
 	handle_movement()
+	$CollisionShape2D.set_deferred("disabled", false)
 	move_and_slide()

@@ -5,7 +5,7 @@ signal ballOut
 @export var initialSpeed: int = 100
 @export var speedGain: int = 10
 
-
+#region ball start
 func initialize_ball() -> void:
 	randomize()
 	position = Vector2(240, 135)
@@ -17,6 +17,7 @@ func initialize_ball() -> void:
 		velocity = Vector2(-1, 0) * initialSpeed
 
 func reinitialize_ball() -> void:
+	$CollisionShape2D.set_deferred("disabled", false)
 	randomize()
 	position = Vector2(240, 135)
 	var randomSide: int = -1 if(randi_range(0, 1) == 0) else 1
@@ -25,29 +26,33 @@ func reinitialize_ball() -> void:
 	velocity = Vector2(randomDirectionX, randomDirectionY).normalized()
 	velocity.x *= initialSpeed
 	velocity.y *= initialSpeed/2
+#endregion
 
+func handle_collision(collision: KinematicCollision2D) -> void:
+	var normal: Vector2 = collision.get_normal()
+	var collider: Object = collision.get_collider()
+	
+	if (collider is CharacterBody2D):
+		if (normal.x != 0 and (normal.y != 1 and normal.y != -1)):
+			if (velocity.y == 0):
+				velocity.y = initialSpeed/2
+			velocity.x += speedGain * sign(velocity.x)
+			velocity.y += speedGain * sign(velocity.y)
+			velocity.x = velocity.x * -1
+		else:
+			$CollisionShape2D.set_deferred("disabled", true)
+
+	elif (collider is StaticBody2D):
+		velocity.y *= -1
 
 func _ready() -> void:
 	initialize_ball()
 
 
-func _physics_process(_delta) -> void:
-	move_and_slide()
-
-func _on_area_2d_area_entered(area) -> void:
-	var body: Node = area.get_parent()
-
-	if (body is CharacterBody2D):
-		print(global_position.x - 5)
-		if (global_position.x + 5 < 416 and global_position.x - 5 > 65): #8 represents 6, which is half the size of the ball, + 2 tolerance...
-			if (velocity.y == 0): 									 #so, the difference between the far left/right of the ball and of the paddle
-				velocity.y = initialSpeed/2
-			velocity.x += speedGain * sign(velocity.x)
-			velocity.y += speedGain * sign(velocity.y)
-			velocity.x = velocity.x * -1
-	elif (body is StaticBody2D):
-		velocity.y *= -1
-
+func _physics_process(delta) -> void:
+	var collision: KinematicCollision2D = move_and_collide(velocity * delta)
+	if (collision):
+		handle_collision(collision)
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	emit_signal("ballOut")
