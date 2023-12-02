@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @export var speed: int = 70
 
-func handle_movement():
+func handle_movement() -> void:
 	var direction: int = 0
 	if (Input.is_action_pressed("p1Down")):
 		direction = 1
@@ -10,9 +10,9 @@ func handle_movement():
 		direction = -1
 	velocity = Vector2(0, direction) * speed
 
-func _ready():
+func _ready() -> void:
 	pass
 
-func _physics_process(_delta):
+func _physics_process(_delta: float) -> void:
 	handle_movement()
 	move_and_slide()

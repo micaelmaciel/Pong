@@ -13,8 +13,8 @@ size = Vector2(480, 0.5)
 script = ExtResource("1_ge4wk")
 
 [node name="Player" parent="." instance=ExtResource("1_3te4e")]
-position = Vector2(67, 120)
-speed = 100
+position = Vector2(67, 141)
+speed = 200
 
 [node name="VBoxContainer" parent="." instance=ExtResource("2_rl7ps")]
 offset_left = 237.0
@@ -26,8 +26,8 @@ position = Vector2(240, 146)
 speedGain = 20
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
-collision_layer = 3
-collision_mask = 3
+collision_layer = 4
+collision_mask = 0
 
 [node name="Area2D" type="Area2D" parent="StaticBody2D"]
 metadata/_edit_lock_ = true
@@ -54,7 +54,8 @@ position = Vector2(240, -0.75)
 shape = SubResource("RectangleShape2D_5cvbb")
 
 [node name="Player2" parent="." instance=ExtResource("4_rtuy8")]
-position = Vector2(413, 120)
+position = Vector2(413, 140)
+speed = 200
 
 [node name="P1Score" type="Label" parent="."]
 offset_right = 40.0

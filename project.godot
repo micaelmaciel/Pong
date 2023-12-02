@@ -54,6 +54,7 @@ p2Down={
 
 2d_physics/layer_1="Ball"
 2d_physics/layer_2="Paddles"
+2d_physics/layer_3="Walls"
 
 [rendering]
 
