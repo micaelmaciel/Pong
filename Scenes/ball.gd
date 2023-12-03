@@ -36,6 +36,7 @@ func handle_collision(collision: KinematicCollision2D) -> void:
 	
 	if (collider is CharacterBody2D):
 		if (normal.x != 0 and (normal.y != 1 and normal.y != -1)):
+			$PaddleHit.play(0.55)
 			if (velocity.y == 0):
 				velocity.y = initialSpeed/2
 			velocity.y = (transform.origin - collider.position).normalized().y * paddleAngleFactor
@@ -45,6 +46,7 @@ func handle_collision(collision: KinematicCollision2D) -> void:
 			$CollisionShape2D.disabled = true
 
 	elif (collider is StaticBody2D):
+		$WallHit.play(0.12)
 		velocity.y *= -1
 
 func _ready() -> void:
