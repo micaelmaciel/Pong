@@ -22,7 +22,7 @@ func reinitialize_ball() -> void:
 	$CollisionShape2D.set_deferred("disabled", false)
 	randomize()
 	position = Vector2(240, 135)
-	var randomSide: int = -1 if(randi_range(0, 1) == 0) else 1
+	var randomSide: int = [1, -1].pick_random()
 	var randomDirectionX: int = randi_range(1, 9) * randomSide
 	var randomDirectionY: int = randi_range(1, 9) * randomSide
 	velocity = Vector2(randomDirectionX, randomDirectionY).normalized()
