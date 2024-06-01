@@ -1,2 +1,2 @@
 # Pong
-Just another Pong game. In Godot 4.
+it's pong
